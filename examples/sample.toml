@@ -1,0 +1,37 @@
+# Sample document used by the examples and the test suite.
+
+title = "TOML example"
+enabled = true
+ratio = 0.75
+created = 2024-03-01T10:30:00Z
+log = { level = "info", color = false, file = { path = "/var/log/app.log", rotate = true } }
+
+[server]
+host = "127.0.0.1"
+port = 8080
+timeouts = [ 1.5, 3.0, 10.0 ]
+tags = [ "dev", "eu-west" ]
+
+[server.limits]
+max_connections = 1_000
+max_body = 0x100000
+
+[owner]
+name = "Ada Lovelace"
+birthday = 1815-12-10
+"contact.email" = "ada@example.com"
+
+[[workers]]
+name = "alpha"
+queues = ["default", "mail"]
+
+[[workers]]
+name = "beta"
+queues = ["bulk"]
+retries = 3
+
+[[workers.tasks]]
+name = "index"
+
+[[workers.tasks]]
+name = "compact"
